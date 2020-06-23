@@ -15,10 +15,24 @@
 | MyBatis Plus |      |
 | Maven        |      |
 
-### Maven 插件介绍
+### 模块
 
+- [rising-waves](README_parent.md)
+    - [rising-waves-dependencies](rising-waves-dependencies/README.md)
+    - [rising-waves-common](rising-waves-common/README.md)
+    - [rising-waves-admin](rising-waves-admin/README.md)
+    - [rising-waves-security](rising-waves-admin/README.md)
+    - rising-waves-scheduler
+    - rising-waves-dashboard
+    - rising-waves-cms
+    - rising-waves-portal
+    - ...
 
+### 架构图
 
+**v1版本：**
+
+![rising-waves-v1](docs/img/rising-waves-v1.png)
 ## 快速开始
 
 ### 在本地运行本项目
