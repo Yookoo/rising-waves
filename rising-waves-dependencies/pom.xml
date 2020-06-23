@@ -2,14 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>rising-waves</artifactId>
-        <groupId>com.waves</groupId>
-        <version>1.0.0.RELEASE</version>
-    </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    <groupId>com.waves</groupId>
     <artifactId>rising-waves-dependencies</artifactId>
+    <version>1.0.0.RELEASE</version>
     <packaging>pom</packaging>
     <name>rising-waves-dependencies</name>
     <description>rising-waves的版本依赖</description>
@@ -74,6 +70,30 @@
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
             </dependency>
+
+
+            <!-- 项目依赖 start -->
+            <dependency>
+                <groupId>com.waves</groupId>
+                <artifactId>rising-waves-common</artifactId>
+                <version>${version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.waves</groupId>
+                <artifactId>rising-waves-admin</artifactId>
+                <version>${version}</version>
+            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>com.waves</groupId>-->
+<!--                <artifactId>rising-waves-cms</artifactId>-->
+<!--                <version>${version}</version>-->
+<!--            </dependency>-->
+            <dependency>
+                <groupId>com.waves</groupId>
+                <artifactId>rising-waves-security</artifactId>
+                <version>${version}</version>
+            </dependency>
+            <!-- 项目依赖 end -->
         </dependencies>
     </dependencyManagement>
 

@@ -12,6 +12,7 @@
     <module>rising-waves-common</module>
     <module>rising-waves-admin</module>
     <module>rising-waves-security</module>
+    <module>rising-waves-generator</module>
   </modules>
 
   <parent>
@@ -47,6 +48,7 @@
     <!-- build plugins dependencies -->
     <dockerfile.plugin.version>1.4.13</dockerfile.plugin.version>
     <spring-javaformat.version>0.0.22</spring-javaformat.version>
+
 
   </properties>
 

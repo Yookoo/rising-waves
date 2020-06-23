@@ -9,13 +9,16 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>rising-waves-admin</artifactId>
-
+    <artifactId>rising-waves-generator</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>com.waves</groupId>
-            <artifactId>rising-waves-common</artifactId>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
         </dependency>
     </dependencies>
 
