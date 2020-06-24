@@ -1,21 +1,21 @@
 ![logo](img/icon.svg) 
 
-**# docsify <small>3.5</small>**
+**# rising-waves <small>1.0</small>**
 
->   一个神奇的文档网站生成器。 
+>   一个简洁优雅的管理系统。 
 
- -   简单、轻便 (压缩后 ~21kB) 
- -   无需生成 html 文件
- -   众多主题 
+ -   Maven构建，模块化开发
+ -   代码简洁优雅，新手易上手
+ -   文档清楚，功能全面
  
  
-[GitHub](https://github.com/docsifyjs/docsify/)
+[GitHub](https://github.com/Yookoo/rising-waves)
 
 [Get Started](#docsify)
 
 <!-- 背景图片 -->
+<!-- ![](_media/bg.png) -->
 
-![](_media/bg.png)
 
 <!-- 背景色 -->
 ![color](#f0f0f0)
