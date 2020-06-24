@@ -1,6 +1,6 @@
 ![logo](img/icon.svg) 
 
-**# rising-waves <small>1.0</small>**
+# **rising-waves <small>1.0</small>**
 
 >   一个简洁优雅的管理系统。 
 
@@ -9,8 +9,7 @@
  -   文档清楚，功能全面
  
  
-[GitHub](https://github.com/Yookoo/rising-waves)
-
+[GitHub](Yookoo/rising-waves/)
 
 [Get Started](#docsify)
 
