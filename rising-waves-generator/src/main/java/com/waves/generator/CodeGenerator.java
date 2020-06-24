@@ -10,9 +10,7 @@ import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * <p>
@@ -62,21 +60,25 @@ public class CodeGenerator {
         gc.setOutputDir(projectPath + "/src/main/java");
         gc.setAuthor("zhukaiyuan");
         gc.setOpen(false);
-        // gc.setSwagger2(true); 实体属性 Swagger2 注解
-        gc.setAuthor(AUTHOR_NAME );
+        // 实体属性 Swagger2 注解
+        gc.setSwagger2(true);
+        gc.setAuthor(AUTHOR_NAME);
         gc.setServiceName("%sService");
-        gc.setServiceImplName("%sServiceImpl");
-
-
+//        gc.setServiceImplName("%sServiceImpl");
+        gc.setFileOverride(true);
         mpg.setGlobalConfig(gc);
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://localhost:3306/spring-cloud-security-oauth2-resource?useUnicode=true&useSSL=false&characterEncoding=utf8");
-        // dsc.setSchemaName("public");
-        dsc.setDriverName("com.mysql.jdbc.Driver");
+        dsc.setUrl("jdbc:mysql://localhost:3306/spring-cloud-security-oauth2-server?useUnicode=true&useSSL=false&characterEncoding=utf8");
+        dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("root");
+//         dsc.setSchemaName("public");
+//        dsc.setUrl("jdbc:h2:mem:public;MODE=MYSQL;DATABASE_TO_UPPER=false;INIT=CREATE SCHEMA IF NOT EXISTS public");
+//        dsc.setDriverName("org.h2.Driver");
+//        dsc.setUsername("sa");
+//        dsc.setPassword("");
         mpg.setDataSource(dsc);
 
         // 包配置
@@ -90,6 +92,9 @@ public class CodeGenerator {
             @Override
             public void initMap() {
                 // to do nothing
+                Map<String, Object> map = new HashMap<>();
+                map.put("abc", this.getConfig().getGlobalConfig().getAuthor() + "-mp");
+                this.setMap(map);
             }
         };
 
