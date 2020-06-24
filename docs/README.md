@@ -37,7 +37,7 @@
 ## 快速开始
 
 ### 在本地运行本项目
-本项目是一个春天启动应用程序建立使用Maven。可以生成 jar 文件并从命令行运行它：
+本项目是一个SpringBoot应用程序，使用Maven构建。可以生成 jar 文件并从命令行运行它：
 ```shell script
 git clone https://github.com/Yookoo/rising-waves.git
 cd rising-waves

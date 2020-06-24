@@ -1,5 +1,6 @@
 # rising-waves
 奔涌吧，后浪，我们在同一条奔涌的河流。
+
 ## 项目介绍
 这是一个后端管理系统，项目命名借鉴了B站2020年五四青年节推出的演讲视频。
 其中"后"寓意后端管理系统，"后浪"也希望我们年轻一代有更好的未来。当然，一分耕耘一分收获，
@@ -18,10 +19,10 @@
 ### 模块
 
 - [rising-waves](docs/rising-waves-parent.md)
-    - [rising-waves-dependencies](rising-waves-dependencies/README.md)
-    - [rising-waves-common](rising-waves-common/README.md)
-    - [rising-waves-admin](rising-waves-admin/README.md)
-    - [rising-waves-security](rising-waves-admin/README.md)
+    - [rising-waves-dependencies](docs/rising-waves-dependencies.md)
+    - [rising-waves-common](docs/rising-waves-common.md)
+    - [rising-waves-admin](docs/rising-waves-admin.md)
+    - [rising-waves-security](docs/rising-waves-admin.md)
     - rising-waves-scheduler
     - rising-waves-dashboard
     - rising-waves-cms
@@ -36,7 +37,7 @@
 ## 快速开始
 
 ### 在本地运行本项目
-本项目是一个春天启动应用程序建立使用Maven。可以生成 jar 文件并从命令行运行它：
+本项目是一个Springboot应用程序，构建使用Maven。可以生成 jar 文件并从命令行运行它：
 ```shell script
 git clone https://github.com/Yookoo/rising-waves.git
 cd rising-waves
@@ -88,8 +89,16 @@ docker run -e MYSQL_USER=root -e MYSQL_PASSWORD=root -e MYSQL_ROOT_PASSWORD=root
 
 对于拉取请求，编辑器配置中提供了编辑器首选项，便于在常见文本编辑器中使用。阅读更多，并在https://editorconfig.org下载插件。如果您以前没有这样做，请填写并提交贡献者许可协议。
 
-### 代码规范
+## 代码规范
 
+## 谢鸣
+
+感谢[docsify](https://docsify.js.org/)提供文档支持
+
+## 参考项目
+
+- [Ruoyi](https://github.com/yangzongzhuan/RuoYi)
+- [spring-petclinc](https://github.com/spring-projects/spring-petclinic)
 
 ## 许可证
 rising-waves 示例应用程序发布在Apache 许可证2.0 版本下。

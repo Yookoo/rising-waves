@@ -4,11 +4,12 @@
 
 >   一个简洁优雅的管理系统。 
 
- -   Maven构建，模块化开发
- -   代码简洁优雅，新手易上手
- -   文档清楚，功能全面
- 
- 
+ - Maven构建，模块化开发
+ - 代码简洁优雅，新手易上手
+ - 文档清楚，功能全面
+
+
+
 [GitHub](Yookoo/rising-waves/)
 
 [Get Started](#docsify)
