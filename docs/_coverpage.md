@@ -9,8 +9,7 @@
  -   文档清楚，功能全面
  
  
-[GitHub](https://github.com/Yookoo/rising-waves)
-
+[GitHub](https://github.com/Yookoo/rising-waves/)
 
 [Get Started](#docsify)
 
