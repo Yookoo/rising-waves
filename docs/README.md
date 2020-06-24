@@ -17,11 +17,12 @@
 
 ### 模块
 
-- [rising-waves](README_parent.md)
-    - [rising-waves-dependencies](../rising-waves-dependencies/README.md)
-    - [rising-waves-common](../rising-waves-common/README.md)
-    - [rising-waves-admin](../rising-waves-admin/README.md)
-    - [rising-waves-security](../rising-waves-admin/README.md)
+- [rising-waves](rising-waves-parent.md)
+    - [rising-waves-dependencies](rising-waves-dependencies.md)
+    - [rising-waves-common](rising-waves-common.md)
+    - [rising-waves-admin](rising-waves-admin.md)
+    - [rising-waves-security](rising-waves-security.md)
+    - [rising-waves-generator](rising-waves-generator.md)
     - rising-waves-scheduler
     - rising-waves-dashboard
     - rising-waves-cms
