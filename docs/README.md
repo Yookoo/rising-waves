@@ -68,13 +68,15 @@ docker run -e MYSQL_USER=root -e MYSQL_PASSWORD=root -e MYSQL_ROOT_PASSWORD=root
 
 我们的问题跟踪器可在此处获取：`https://github.com/Yookoo/rising-waves/issues`
 
-### 先决条件
+### 准备工作
 
 应在系统中安装以下项目：
 
 - Java 8 或 更高
 - git 命令行工具（`https://help.github.com/articles/set-up-git`)
 - 选择您的 IDE： Eclipse（带 maven 插件）、STS、 IntelliJ IDEA、 VS Code
+
+详情可查看[准备工作](libs/project/准备工作.md)
 
 ### 步骤：
 
@@ -91,6 +93,7 @@ docker run -e MYSQL_USER=root -e MYSQL_PASSWORD=root -e MYSQL_ROOT_PASSWORD=root
 
 ### 代码规范
 
+详情可查看[Java 编码规范](libs/standard/java-coding-standards.md)
 
 ## 许可证
 rising-waves 示例应用程序发布在Apache 许可证2.0 版本下。

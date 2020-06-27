@@ -9,7 +9,7 @@ spring:
     username: sa
     password:
     schema:
-      - classpath:sql/admin_20200623.sql
+      - classpath:sql/h2/sys.sql
     sql-script-encoding: utf-8
     platform: h2
     initialization-mode: always
@@ -19,3 +19,12 @@ spring:
       path: /h2/console
       settings:
         web-allow-others: true
+
+
+
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: deleted  #全局逻辑删除字段值 3.3.0开始支持，详情看下面。
+      logic-delete-value: true # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: false # 逻辑未删除值(默认为 0)

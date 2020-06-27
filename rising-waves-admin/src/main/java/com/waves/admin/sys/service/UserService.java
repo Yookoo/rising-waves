@@ -5,11 +5,11 @@ import com.waves.admin.sys.entity.User;
 
 /**
  * <p>
- * 用户表 服务类
+ * 用户信息表 服务类
  * </p>
  *
  * @author zhukaiyuan
- * @since 2020-06-23
+ * @since 2020-06-26
  */
 public interface UserService extends IService<User> {
 

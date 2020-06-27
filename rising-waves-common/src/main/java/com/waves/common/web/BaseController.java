@@ -1,7 +1,6 @@
 package com.waves.common.web;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -39,7 +38,7 @@ public abstract class BaseController<T extends BaseEntity, S extends IService<T>
      */
     @PostMapping
     public ResponseEntity create(@Valid @RequestBody T entity) {
-        // 业务逻辑
+
         boolean created = service.save(entity);
         if (created) {
             URI uri = URI.create(request.getContextPath() + entity.getId());
@@ -56,7 +55,7 @@ public abstract class BaseController<T extends BaseEntity, S extends IService<T>
      */
     @DeleteMapping("{id}")
     public ResponseEntity remove(@PathVariable Long id) {
-        // 业务逻辑
+
         boolean deleted = service.removeById(id);
         if (deleted) {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body(WebContants.DELETED_SUCCESS);

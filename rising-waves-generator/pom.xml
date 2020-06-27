@@ -32,6 +32,10 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.waves</groupId>
+            <artifactId>rising-waves-common</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

@@ -1,7 +1,6 @@
 package com.waves.common.web;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,8 +19,18 @@ public class BaseEntity implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    private LocalDateTime created;
+    @TableField(fill = FieldFill.INSERT)
+    private LocalDateTime createTime;
+    @TableField(fill = FieldFill.INSERT)
+    private String createBy;
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private LocalDateTime updateTime;
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private String updateBy;
 
-    private LocalDateTime updated;
+    @TableLogic
+    private Boolean deleted;
+
+    private String remark;
 
 }

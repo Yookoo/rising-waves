@@ -9,6 +9,8 @@ import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
+import com.waves.common.web.BaseController;
+import com.waves.common.web.BaseEntity;
 
 import java.util.*;
 
@@ -30,7 +32,7 @@ public class CodeGenerator {
     /**
      * 作者
      */
-    private static final String AUTHOR_NAME = "zhukaiyuan";
+    private static final String AUTHOR_NAME = "不吃香菜9527";
 
 
     /**
@@ -58,19 +60,18 @@ public class CodeGenerator {
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
         gc.setOutputDir(projectPath + "/src/main/java");
-        gc.setAuthor("zhukaiyuan");
         gc.setOpen(false);
         // 实体属性 Swagger2 注解
         gc.setSwagger2(true);
         gc.setAuthor(AUTHOR_NAME);
+        // 修改Service接口的文件名，去掉前面的I
         gc.setServiceName("%sService");
-//        gc.setServiceImplName("%sServiceImpl");
         gc.setFileOverride(true);
         mpg.setGlobalConfig(gc);
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://localhost:3306/spring-cloud-security-oauth2-server?useUnicode=true&useSSL=false&characterEncoding=utf8");
+        dsc.setUrl("jdbc:mysql://localhost:3306/rising-waves?useUnicode=true&useSSL=false&characterEncoding=utf8");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("root");
@@ -114,21 +115,6 @@ public class CodeGenerator {
                         + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
             }
         });
-        /*
-        cfg.setFileCreate(new IFileCreate() {
-            @Override
-            public boolean isCreate(ConfigBuilder configBuilder, FileType fileType, String filePath) {
-                // 判断自定义文件夹是否需要创建
-                checkDir("调用默认方法创建的目录，自定义目录用");
-                if (fileType == FileType.MAPPER) {
-                    // 已经生成 mapper 文件判断存在，不想重新生成返回 false
-                    return !new File(filePath).exists();
-                }
-                // 允许生成模板文件
-                return true;
-            }
-        });
-        */
         cfg.setFileOutConfigList(focList);
         mpg.setCfg(cfg);
 
@@ -136,9 +122,10 @@ public class CodeGenerator {
         TemplateConfig templateConfig = new TemplateConfig();
 
         // 配置自定义输出模板
+        // 这里我没有使用这种方案，而是创建一个controller覆盖其默认模板
         //指定自定义模板路径，注意不要带上.ftl/.vm, 会根据使用的模板引擎自动识别
         // templateConfig.setEntity("templates/entity2.java");
-//         templateConfig.setService();
+        // templateConfig.setService();
         // templateConfig.setController();
 
         templateConfig.setXml(null);
@@ -148,13 +135,11 @@ public class CodeGenerator {
         StrategyConfig strategy = new StrategyConfig();
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
-//        strategy.setSuperEntityClass("你自己的父类实体,没有就不用设置!");
+        strategy.setSuperEntityClass(BaseEntity.class);
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
         // 公共父类
-//        strategy.setSuperControllerClass("你自己的父类控制器,没有就不用设置!");
-        // 写于父类中的公共字段
-//        strategy.setSuperEntityColumns("id");
+        strategy.setSuperControllerClass(BaseController.class);
         strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(pc.getModuleName() + "_");
