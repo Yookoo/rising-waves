@@ -3,7 +3,7 @@ package com.waves.common.web;
 /**
  * @author apple
  */
-public interface WebContants {
+public interface WebConstants {
 
     String DELETED_SUCCESS = "删除成功";
     String DELETED_FAILURE = "删除失败";

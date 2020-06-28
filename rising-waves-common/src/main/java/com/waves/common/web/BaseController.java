@@ -38,13 +38,12 @@ public abstract class BaseController<T extends BaseEntity, S extends IService<T>
      */
     @PostMapping
     public ResponseEntity create(@Valid @RequestBody T entity) {
-
         boolean created = service.save(entity);
         if (created) {
             URI uri = URI.create(request.getContextPath() + entity.getId());
-            return ResponseEntity.created(uri).body(WebContants.CREATED_SUCCESS);
+            return ResponseEntity.created(uri).body(WebConstants.CREATED_SUCCESS);
         }
-        return ResponseEntity.badRequest().body(WebContants.CREATED_FAILURE);
+        return ResponseEntity.badRequest().body(WebConstants.CREATED_FAILURE);
     }
 
     /**
@@ -58,9 +57,9 @@ public abstract class BaseController<T extends BaseEntity, S extends IService<T>
 
         boolean deleted = service.removeById(id);
         if (deleted) {
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(WebContants.DELETED_SUCCESS);
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(WebConstants.DELETED_SUCCESS);
         }
-        return ResponseEntity.status(HttpStatus.RESET_CONTENT).body(WebContants.DELETED_FAILURE);
+        return ResponseEntity.status(HttpStatus.RESET_CONTENT).body(WebConstants.DELETED_FAILURE);
     }
 
     /**
@@ -74,9 +73,9 @@ public abstract class BaseController<T extends BaseEntity, S extends IService<T>
         // 业务逻辑
         boolean updated = service.updateById(entity);
         if (updated) {
-            return ResponseEntity.ok(WebContants.UPDATED_SUCCESS);
+            return ResponseEntity.ok(WebConstants.UPDATED_SUCCESS);
         }
-        return ResponseEntity.status(HttpStatus.RESET_CONTENT).body(WebContants.UPDATED_FAILURE);
+        return ResponseEntity.status(HttpStatus.RESET_CONTENT).body(WebConstants.UPDATED_FAILURE);
     }
 
     /**

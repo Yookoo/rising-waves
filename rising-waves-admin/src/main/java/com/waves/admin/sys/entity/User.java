@@ -1,6 +1,7 @@
 package com.waves.admin.sys.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.waves.common.web.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -49,9 +50,11 @@ public class User extends BaseEntity {
     @ApiModelProperty(value = "头像地址")
     private String avatar;
 
+    @JsonIgnore
     @ApiModelProperty(value = "密码")
     private String password;
 
+    @JsonIgnore
     @ApiModelProperty(value = "帐号状态（0正常 1停用）")
     private Integer status;
 
