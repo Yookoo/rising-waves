@@ -1,6 +1,5 @@
 package com.waves.admin.sys.controller;
 
-
 import com.waves.admin.sys.entity.User;
 import com.waves.admin.sys.service.UserService;
 import com.waves.common.web.BaseController;

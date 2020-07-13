@@ -12,28 +12,29 @@ import java.time.LocalDateTime;
 @Slf4j
 public class AdminMetaObjectHandler implements MetaObjectHandler {
 
-    @Override
-    public void insertFill(MetaObject metaObject) {
-        log.info("start insert fill ....");
-        this.strictInsertFill(metaObject, "createTime", LocalDateTime.class, LocalDateTime.now());
-        this.strictInsertFill(metaObject, "createBy", String.class, getCreatedBy());
-        this.strictUpdateFill(metaObject, "updateTime", LocalDateTime.class, LocalDateTime.now());
-        this.strictInsertFill(metaObject, "updateBy", String.class, getUpdatedBy());
+	@Override
+	public void insertFill(MetaObject metaObject) {
+		log.info("start insert fill ....");
+		this.strictInsertFill(metaObject, "createTime", LocalDateTime.class, LocalDateTime.now());
+		this.strictInsertFill(metaObject, "createBy", String.class, getCreatedBy());
+		this.strictUpdateFill(metaObject, "updateTime", LocalDateTime.class, LocalDateTime.now());
+		this.strictInsertFill(metaObject, "updateBy", String.class, getUpdatedBy());
 
-    }
+	}
 
-    @Override
-    public void updateFill(MetaObject metaObject) {
-        log.info("start update fill ....");
-        this.strictUpdateFill(metaObject, "updateTime", LocalDateTime.class, LocalDateTime.now());
-        this.strictInsertFill(metaObject, "updateBy", String.class, getUpdatedBy());
-    }
+	@Override
+	public void updateFill(MetaObject metaObject) {
+		log.info("start update fill ....");
+		this.strictUpdateFill(metaObject, "updateTime", LocalDateTime.class, LocalDateTime.now());
+		this.strictInsertFill(metaObject, "updateBy", String.class, getUpdatedBy());
+	}
 
-    private String getCreatedBy(){
-        return "admin";
-    }
+	private String getCreatedBy() {
+		return "admin";
+	}
 
-    private String getUpdatedBy(){
-        return "admin";
-    }
+	private String getUpdatedBy() {
+		return "admin";
+	}
+
 }

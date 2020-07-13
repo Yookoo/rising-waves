@@ -13,6 +13,7 @@
     <module>rising-waves-admin</module>
     <module>rising-waves-security</module>
     <module>rising-waves-generator</module>
+    <module>rising-waves-cms</module>
   </modules>
 
   <parent>
@@ -58,7 +59,7 @@
       <dependency>
         <groupId>com.waves</groupId>
         <artifactId>rising-waves-dependencies</artifactId>
-        <version>${version}</version>
+        <version>${project.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>

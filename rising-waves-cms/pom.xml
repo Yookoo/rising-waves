@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.waves</groupId>
+        <artifactId>rising-waves</artifactId>
+        <version>1.0.0.RELEASE</version>
+    </parent>
+
+    <artifactId>rising-waves-cms</artifactId>
+    <name>rising-waves-cms</name>
+    <description>rising-waves-cms</description>
+    <properties>
+            <spring-javaformat-maven-plugin.version>0.0.22</spring-javaformat-maven-plugin.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.waves</groupId>
+            <artifactId>rising-waves-common</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!---->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>io.spring.javaformat</groupId>-->
+<!--                <artifactId>spring-javaformat-maven-plugin</artifactId>-->
+<!--                <version>${spring-javaformat-maven-plugin.version}</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <phase>validate</phase>-->
+<!--                        <inherited>true</inherited>-->
+<!--                        <goals>-->
+<!--                            <goal>apply</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+        </plugins>
+    </build>
+
+
+</project>

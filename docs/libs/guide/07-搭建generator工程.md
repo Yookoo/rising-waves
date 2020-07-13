@@ -201,3 +201,11 @@ public class ${table.controllerName} extends ${superControllerClass}<${entity}, 
 
 这里我们先不生成那么多，如果我们在编写User相关代码时发现有问题我们可以及时修改模板再生成其他模块的代码。
 
+
+
+## 生成Role相关代码
+
+
+
+## 生成Permission相关代码
+

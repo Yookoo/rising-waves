@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 /**
  *
  * mybatis plus 配置文件
+ *
  * @author apple
  */
 @EnableTransactionManagement
@@ -19,24 +20,25 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @MapperScan("com.waves.admin.*.mapper")
 public class MybatisPlusConfiguration {
 
-    /**
-     * 分页拦截器
-     * @return
-     */
-    @Bean
-    public PaginationInterceptor paginationInterceptor() {
-        PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
-        // 设置请求的页面大于最大页后操作， true调回到首页，false 继续请求  默认false
-        // paginationInterceptor.setOverflow(false);
-        // 设置最大单页限制数量，默认 500 条，-1 不受限制
-        // paginationInterceptor.setLimit(500);
-        // 开启 count 的 join 优化,只针对部分 left join
-        paginationInterceptor.setCountSqlParser(new JsqlParserCountOptimize(true));
-        return paginationInterceptor;
-    }
+	/**
+	 * 分页拦截器
+	 * @return
+	 */
+	@Bean
+	public PaginationInterceptor paginationInterceptor() {
+		PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
+		// 设置请求的页面大于最大页后操作， true调回到首页，false 继续请求 默认false
+		// paginationInterceptor.setOverflow(false);
+		// 设置最大单页限制数量，默认 500 条，-1 不受限制
+		// paginationInterceptor.setLimit(500);
+		// 开启 count 的 join 优化,只针对部分 left join
+		paginationInterceptor.setCountSqlParser(new JsqlParserCountOptimize(true));
+		return paginationInterceptor;
+	}
 
-    @Bean
-    public MetaObjectHandler adminMetaObjectHandler(){
-        return new AdminMetaObjectHandler();
-    }
+	@Bean
+	public MetaObjectHandler adminMetaObjectHandler() {
+		return new AdminMetaObjectHandler();
+	}
+
 }
