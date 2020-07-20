@@ -19,9 +19,9 @@ public class BaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@TableId(value = "id", type = IdType.AUTO)
+	@TableId(value = "id", type = IdType.AUTO )
 	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
-	@ApiModelProperty(hidden = true)
+	@ApiModelProperty(hidden = true, example = "0")
 	private Long id;
 
 	@TableField(fill = FieldFill.INSERT)

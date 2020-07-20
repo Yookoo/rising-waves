@@ -1,50 +1,14 @@
 # 使用Swagger测试Api
 
-
+各位小伙伴，大家好，欢迎来看。这个rising waves 的第八期。使用swagger测试API。上次我们使用代码生成工具生成的user的相关的增删改查操作。这次我们来测试一下我们代码生成的效果，在测试之前呢，为了更直观的看到我们的一些功能。对外的接口，我们首先要做一个swagger的集成工作
 
 ## 配置swagger
 
-
+首先，使用swagger们首先需要引入soldier的jar包，我们在pom文件中添加swagger的相关的依赖。然后我们还需要一个swagger的配置类。这个我们添加到自己admin独立的配置里面没有添加到公共的。因为我想对每个模块的文档单独管理，因为他们的配置的细节有些不同。这个配置类里面都是一些固定的写法，这里我就不再多做介绍了。下面我们来运行一下程序，看一下我们的。代码的最终的效果。
 
 访问`http://localhost:8080/swagger-ui.html#`
 
-## 增加分页过滤器
-
-```
-PaginationInterceptor
-```
-
-## 增加日期/操作人填充
-
-```
-MetaObjectHandler
-```
-
-## 增加逻辑删除
-
-```
-@TableLogic
-```
-
-## 优化实体属性显示
-
-1、属性可以作为参数，但是不能返回；eg. password
-
-2、属性可以作为返回值，但是不能作为参数; eg. createTime、LoginIp
-
-
-
-解决方法：
-
-1、通过Query、AO(Param)、VO 解决
-
-2、通过 @JsonIgnore
-
-3、通过自定义注解
-
-4、通过@JsonPropertiy
-
-
+大家可以看到，这是我们对外暴露出来的几个增删改查的接口，大家通过这个swagger也可以直接操作去测试我们的API是否是不是可用。这里我来简单测试一下。
 
 
 

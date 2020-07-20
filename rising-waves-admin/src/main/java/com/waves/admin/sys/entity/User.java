@@ -27,7 +27,7 @@ public class User extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 
-	@ApiModelProperty(value = "部门ID")
+	@ApiModelProperty(value = "部门ID", example = "0")
 	private Long deptId;
 
 	@ApiModelProperty(value = "用户账号")

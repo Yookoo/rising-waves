@@ -29,7 +29,7 @@ CREATE TABLE sys_permission (
   sorted int(4) DEFAULT '0' COMMENT '显示顺序',
   path varchar(200) DEFAULT '' COMMENT '路由地址',
   component varchar(255) DEFAULT NULL COMMENT '组件路径',
-  external_link tinyint(1) DEFAULT '0' COMMENT '是否为外链（0是 1否）',
+  external_link tinyint(1) DEFAULT '0' COMMENT '是否为外链（1是 0否）',
   perms_type tinyint(2) DEFAULT '0' COMMENT '权限类型（0 未知 1菜单 2按钮 3 目录）',
   visible tinyint(1) DEFAULT '0' COMMENT '显示状态（1显示 0隐藏）',
   deleted tinyint(1) DEFAULT '0' COMMENT '权限状态（0正常 1删除）',

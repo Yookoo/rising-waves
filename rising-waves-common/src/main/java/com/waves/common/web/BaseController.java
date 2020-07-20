@@ -65,9 +65,10 @@ public abstract class BaseController<T extends BaseEntity, S extends IService<T>
 	 * @param domain 领域模型
 	 * @return {@link ResponseResult}
 	 */
-	@PutMapping
-	public ResponseEntity update(@Valid @RequestBody T entity) {
+	@PutMapping("/{id}")
+	public ResponseEntity update(@PathVariable Long id,@Valid @RequestBody T entity) {
 		// 业务逻辑
+		entity.setId(id);
 		boolean updated = service.updateById(entity);
 		if (updated) {
 			return ResponseEntity.ok(WebConstants.UPDATED_SUCCESS);
@@ -80,7 +81,7 @@ public abstract class BaseController<T extends BaseEntity, S extends IService<T>
 	 * @param id {@code Long}
 	 * @return {@link ResponseResult}
 	 */
-	@GetMapping("get/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity get(@PathVariable Long id) {
 		T domain = service.getById(id);
 		return ResponseEntity.ok(domain);
