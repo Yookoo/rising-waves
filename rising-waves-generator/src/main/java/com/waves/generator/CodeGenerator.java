@@ -27,7 +27,7 @@ public class CodeGenerator {
 	/**
 	 * 基本包名
 	 */
-	private static final String BASE_PACKAGE = "com.waves.cms";
+	private static final String BASE_PACKAGE = "com.waves.gateway";
 
 	/**
 	 * 作者
@@ -70,7 +70,7 @@ public class CodeGenerator {
 
 		// 数据源配置
 		DataSourceConfig dsc = new DataSourceConfig();
-		dsc.setUrl("jdbc:mysql://localhost:3306/rising-waves?useUnicode=true&useSSL=false&characterEncoding=utf8");
+		dsc.setUrl("jdbc:mysql://localhost:3306/rw-gateway?useUnicode=true&useSSL=false&characterEncoding=utf8");
 		dsc.setDriverName("com.mysql.cj.jdbc.Driver");
 		dsc.setUsername("root");
 		dsc.setPassword("root");
