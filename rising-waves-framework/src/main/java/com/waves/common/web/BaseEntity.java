@@ -21,7 +21,7 @@ public class BaseEntity implements Serializable {
 
 	@TableId(value = "id", type = IdType.AUTO )
 	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
-	@ApiModelProperty(hidden = true, example = "0")
+	@ApiModelProperty(hidden = true)
 	private Long id;
 
 	@TableField(fill = FieldFill.INSERT)

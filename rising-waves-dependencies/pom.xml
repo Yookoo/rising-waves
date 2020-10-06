@@ -113,7 +113,7 @@
             <!-- 项目依赖 start -->
             <dependency>
                 <groupId>com.waves</groupId>
-                <artifactId>rising-waves-common</artifactId>
+                <artifactId>rising-waves-framework</artifactId>
                 <version>${version}</version>
             </dependency>
             <dependency>
@@ -129,6 +129,11 @@
             <dependency>
                 <groupId>com.waves</groupId>
                 <artifactId>rising-waves-security</artifactId>
+                <version>${version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.waves</groupId>
+                <artifactId>rising-waves-gateway</artifactId>
                 <version>${version}</version>
             </dependency>
             <!-- 项目依赖 end -->

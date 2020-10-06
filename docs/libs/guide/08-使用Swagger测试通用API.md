@@ -12,3 +12,21 @@
 
 
 
+番外：解决SwaggerUI报错问题
+
+
+
+```shell
+java.lang.NumberFormatException: For input string: ""
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:601)
+	at java.lang.Long.valueOf(Long.java:803)
+	at io.swagger.models.parameters.AbstractSerializableParameter.getExample(AbstractSerializableParameter.java:412)
+```
+
+
+
+参考：[掘金](https://juejin.im/post/5f0ef8365188252e644cfdd3)
+
+
+

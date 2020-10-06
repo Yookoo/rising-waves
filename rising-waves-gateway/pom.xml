@@ -9,9 +9,9 @@
         <version>1.0.0.RELEASE</version>
     </parent>
 
-    <artifactId>rising-waves-cms</artifactId>
-    <name>rising-waves-cms</name>
-    <description>rising-waves-cms</description>
+    <artifactId>rising-waves-gateway</artifactId>
+    <name>rising-waves-gateway</name>
+    <description>rising-waves-gateway</description>
     <properties>
             <spring-javaformat-maven-plugin.version>0.0.22</spring-javaformat-maven-plugin.version>
     </properties>
@@ -45,7 +45,6 @@
 <!--            </plugin>-->
         </plugins>
     </build>
-
 
 
 </project>

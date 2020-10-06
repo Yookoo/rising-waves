@@ -9,11 +9,12 @@
   <version>1.0.0.RELEASE</version>
   <modules>
     <module>rising-waves-dependencies</module>
-    <module>rising-waves-common</module>
+    <module>rising-waves-framework</module>
     <module>rising-waves-admin</module>
     <module>rising-waves-security</module>
     <module>rising-waves-generator</module>
     <module>rising-waves-cms</module>
+    <module>rising-waves-gateway</module>
   </modules>
 
   <parent>

@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>rising-waves-common</artifactId>
+    <artifactId>rising-waves-framework</artifactId>
 
     <dependencies>
         <!-- Spring and Spring Boot dependencies -->
@@ -42,15 +42,15 @@
             <artifactId>springfox-swagger2</artifactId>
         </dependency>
         <!--        http://localhost:8080/swagger-ui.html#/ -->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-        </dependency>
-        <!--        http://localhost:8080/doc.html-->
 <!--        <dependency>-->
-<!--            <groupId>com.github.xiaoymin</groupId>-->
-<!--            <artifactId>swagger-bootstrap-ui</artifactId>-->
+<!--            <groupId>io.springfox</groupId>-->
+<!--            <artifactId>springfox-swagger-ui</artifactId>-->
 <!--        </dependency>-->
+        <!--        http://localhost:8080/doc.html-->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>swagger-bootstrap-ui</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

@@ -15,7 +15,7 @@
     <dependencies>
         <dependency>
             <groupId>com.waves</groupId>
-            <artifactId>rising-waves-common</artifactId>
+            <artifactId>rising-waves-framework</artifactId>
         </dependency>
 <!--   -->
     </dependencies>
