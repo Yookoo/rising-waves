@@ -22,7 +22,7 @@
         <swagger-models.version>1.6.0</swagger-models.version>
         <swagger-annotations.version>1.6.0</swagger-annotations.version>
         <swagger-bootstrap-ui.version>1.9.6</swagger-bootstrap-ui.version>
-        <guava.version>20.0</guava.version>
+        <guava.version>25.1-jre</guava.version>
     </properties>
 
     <licenses>
