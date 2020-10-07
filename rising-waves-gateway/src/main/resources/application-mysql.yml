@@ -5,9 +5,16 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/rw_gateway?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    url: jdbc:mysql://localhost:3306/rw-gateway?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
     username: root
     password: root
+  redis:
+    port: 6379
+    host: localhost
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
 
 mybatis-plus:
   global-config:
@@ -15,3 +22,4 @@ mybatis-plus:
       logic-delete-field: deleted  #全局逻辑删除字段值 3.3.0开始支持，详情看下面。
       logic-delete-value: true # 逻辑已删除值(默认为 1)
       logic-not-delete-value: false # 逻辑未删除值(默认为 0)
+

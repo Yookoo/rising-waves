@@ -1,4 +1,4 @@
-package com.waves.common.web;
+package com.waves.common.http;
 
 import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -19,7 +19,7 @@ public class BaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@TableId(value = "id", type = IdType.AUTO )
+	@TableId(value = "id", type = IdType.AUTO)
 	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	@ApiModelProperty(hidden = true)
 	private Long id;
@@ -29,26 +29,14 @@ public class BaseEntity implements Serializable {
 	@ApiModelProperty(hidden = true)
 	private LocalDateTime createTime;
 
-	@TableField(fill = FieldFill.INSERT)
-	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
-	@ApiModelProperty(hidden = true)
-	private String createBy;
-
 	@TableField(fill = FieldFill.INSERT_UPDATE)
 	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	@ApiModelProperty(hidden = true)
 	private LocalDateTime updateTime;
 
-	@TableField(fill = FieldFill.INSERT_UPDATE)
-	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
-	@ApiModelProperty(hidden = true)
-	private String updateBy;
-
 	@TableLogic
 	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	@ApiModelProperty(hidden = true)
 	private Boolean deleted;
-
-	private String remark;
 
 }

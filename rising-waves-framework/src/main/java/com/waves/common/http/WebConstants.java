@@ -1,9 +1,11 @@
-package com.waves.common.web;
+package com.waves.common.http;
 
 /**
  * @author apple
  */
 public interface WebConstants {
+
+	String LOG_TRACE_ID = "log_trace_id";
 
 	String DELETED_SUCCESS = "删除成功";
 
@@ -16,5 +18,9 @@ public interface WebConstants {
 	String UPDATED_SUCCESS = "更新成功";
 
 	String UPDATED_FAILURE = "更新失败";
+
+	String OPTIONED_SUCCESS = "操作成功";
+
+	String OPTIONED_FAILURE = "操作失败";
 
 }

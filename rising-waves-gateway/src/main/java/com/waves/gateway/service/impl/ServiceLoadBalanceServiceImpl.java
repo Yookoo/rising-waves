@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
  * @since 2020-10-06
  */
 @Service
-public class ServiceLoadBalanceServiceImpl extends ServiceImpl<ServiceLoadBalanceMapper, ServiceLoadBalance> implements ServiceLoadBalanceService {
+public class ServiceLoadBalanceServiceImpl extends ServiceImpl<ServiceLoadBalanceMapper, ServiceLoadBalance>
+		implements ServiceLoadBalanceService {
 
 }

@@ -1,7 +1,7 @@
 package com.waves.gateway.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.waves.common.web.BaseEntity;
+import com.waves.common.http.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
  * @since 2020-10-06
  */
 @Service
-public class ServiceAccessControlServiceImpl extends ServiceImpl<ServiceAccessControlMapper, ServiceAccessControl> implements ServiceAccessControlService {
+public class ServiceAccessControlServiceImpl extends ServiceImpl<ServiceAccessControlMapper, ServiceAccessControl>
+		implements ServiceAccessControlService {
 
 }

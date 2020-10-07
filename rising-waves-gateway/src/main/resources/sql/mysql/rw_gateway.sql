@@ -33,8 +33,8 @@ CREATE TABLE `gateway_admin` (
   `user_name` varchar(255) NOT NULL DEFAULT '' COMMENT '用户名',
   `salt` varchar(50) NOT NULL DEFAULT '' COMMENT '盐',
   `password` varchar(255) NOT NULL DEFAULT '' COMMENT '密码',
-  `create_at` datetime NOT NULL DEFAULT '1971-01-01 00:00:00' COMMENT '新增时间',
-  `update_at` datetime NOT NULL DEFAULT '1971-01-01 00:00:00' COMMENT '更新时间',
+  `create_time` datetime NOT NULL DEFAULT '1971-01-01 00:00:00' COMMENT '新增时间',
+  `update_time` datetime NOT NULL DEFAULT '1971-01-01 00:00:00' COMMENT '更新时间',
   `deleted` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否删除'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='管理员表';
 
@@ -42,7 +42,7 @@ CREATE TABLE `gateway_admin` (
 -- 转存表中的数据 `gateway_admin`
 --
 
-INSERT INTO `gateway_admin` (`id`, `user_name`, `salt`, `password`, `create_at`, `update_at`, `deleted`) VALUES
+INSERT INTO `gateway_admin` (`id`, `user_name`, `salt`, `password`, `create_time`, `update_time`, `deleted`) VALUES
 (1, 'admin', 'admin', '2823d896e9822c0833d41d4904f0c00756d718570fce49b9a379a62c804689d3', '2020-04-10 16:42:05', '2020-04-21 06:35:08', 0);
 
 -- --------------------------------------------------------
@@ -59,8 +59,8 @@ CREATE TABLE `gateway_app` (
   `white_ips` varchar(1000) NOT NULL DEFAULT '' COMMENT 'ip白名单，支持前缀匹配',
   `qpd` bigint(20) NOT NULL DEFAULT '0' COMMENT '日请求量限制',
   `qps` bigint(20) NOT NULL DEFAULT '0' COMMENT '每秒请求量限制',
-  `create_at` datetime NOT NULL COMMENT '添加时间',
-  `update_at` datetime NOT NULL COMMENT '更新时间',
+  `create_time` datetime NOT NULL COMMENT '添加时间',
+  `update_time` datetime NOT NULL COMMENT '更新时间',
   `deleted` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否删除 1=删除'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='网关租户表';
 
@@ -68,7 +68,7 @@ CREATE TABLE `gateway_app` (
 -- 转存表中的数据 `gateway_app`
 --
 
-INSERT INTO `gateway_app` (`id`, `app_id`, `name`, `secret`, `white_ips`, `qpd`, `qps`, `create_at`, `update_at`, `deleted`) VALUES
+INSERT INTO `gateway_app` (`id`, `app_id`, `name`, `secret`, `white_ips`, `qpd`, `qps`, `create_time`, `update_time`, `deleted`) VALUES
 (31, 'app_id_a', '租户A', '449441eb5e72dca9c42a12f3924ea3a2', 'white_ips', 100000, 100, '2020-04-15 20:55:02', '2020-04-21 07:23:34', 0),
 (32, 'app_id_b', '租户B', '8d7b11ec9be0e59a36b52f32366c09cb', '', 20, 0, '2020-04-15 21:40:52', '2020-04-21 07:23:27', 0),
 (33, 'app_id', '租户名称', '', '', 0, 0, '2020-04-15 22:02:23', '2020-04-15 22:06:51', 1),
@@ -192,8 +192,8 @@ CREATE TABLE `gateway_service_info` (
   `load_type` tinyint(4) NOT NULL DEFAULT '0' COMMENT '负载类型 0=http 1=tcp 2=grpc',
   `service_name` varchar(255) NOT NULL DEFAULT '' COMMENT '服务名称 6-128 数字字母下划线',
   `service_desc` varchar(255) NOT NULL DEFAULT '' COMMENT '服务描述',
-  `create_at` datetime NOT NULL DEFAULT '1971-01-01 00:00:00' COMMENT '添加时间',
-  `update_at` datetime NOT NULL DEFAULT '1971-01-01 00:00:00' COMMENT '更新时间',
+  `create_time` datetime NOT NULL DEFAULT '1971-01-01 00:00:00' COMMENT '添加时间',
+  `update_time` datetime NOT NULL DEFAULT '1971-01-01 00:00:00' COMMENT '更新时间',
   `deleted` tinyint(4) DEFAULT '0' COMMENT '是否删除 1=删除'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='网关基本信息表';
 
@@ -201,7 +201,7 @@ CREATE TABLE `gateway_service_info` (
 -- 转存表中的数据 `gateway_service_info`
 --
 
-INSERT INTO `gateway_service_info` (`id`, `load_type`, `service_name`, `service_desc`, `create_at`, `update_at`, `deleted`) VALUES
+INSERT INTO `gateway_service_info` (`id`, `load_type`, `service_name`, `service_desc`, `create_time`, `update_time`, `deleted`) VALUES
 (34, 0, 'websocket_test', 'websocket_test', '2020-04-13 01:31:47', '1971-01-01 00:00:00', 1),
 (35, 1, 'test_grpc', 'test_grpc', '2020-04-13 01:34:32', '1971-01-01 00:00:00', 1),
 (36, 2, 'test_httpe', 'test_httpe', '2020-04-11 21:12:48', '1971-01-01 00:00:00', 1),

@@ -1,4 +1,4 @@
-package com.waves.common.web;
+package com.waves.common.http;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -66,7 +66,7 @@ public abstract class BaseController<T extends BaseEntity, S extends IService<T>
 	 * @return {@link ResponseResult}
 	 */
 	@PutMapping("/{id}")
-	public ResponseEntity update(@PathVariable Long id,@Valid @RequestBody T entity) {
+	public ResponseEntity update(@PathVariable Long id, @Valid @RequestBody T entity) {
 		// 业务逻辑
 		entity.setId(id);
 		boolean updated = service.updateById(entity);

@@ -4,7 +4,7 @@ import com.waves.gateway.entity.Category;
 import com.waves.gateway.service.CategoryService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.waves.common.web.BaseController;
+import com.waves.common.http.BaseController;
 
 /**
  * <p>

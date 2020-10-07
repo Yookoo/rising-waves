@@ -1,6 +1,5 @@
 package com.waves.common.handler;
 
-
 import com.baomidou.mybatisplus.extension.api.R;
 import com.waves.common.exception.BaseException;
 import lombok.extern.slf4j.Slf4j;
@@ -36,7 +35,7 @@ public class GlobalExceptionHandler {
 		BindingResult bindingResult = e.getBindingResult();
 		if (bindingResult.hasErrors()) {
 			List<ObjectError> allErrors = bindingResult.getAllErrors();
-			List<String>      messages  = new ArrayList<>();
+			List<String> messages = new ArrayList<>();
 			allErrors.forEach(p -> {
 				FieldError fieldError = (FieldError) p;
 				log.error("参数格式错误：参数对象：{}；字段：{}；错误原因:{}", fieldError.getObjectName(), fieldError.getField(),

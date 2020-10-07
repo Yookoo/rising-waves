@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
-import com.waves.common.web.BaseController;
-import com.waves.common.web.BaseEntity;
+import com.waves.common.http.BaseController;
+import com.waves.common.http.BaseEntity;
 
 import java.util.*;
 

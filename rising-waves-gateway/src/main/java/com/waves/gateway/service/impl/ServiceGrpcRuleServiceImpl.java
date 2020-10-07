@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
  * @since 2020-10-06
  */
 @Service
-public class ServiceGrpcRuleServiceImpl extends ServiceImpl<ServiceGrpcRuleMapper, ServiceGrpcRule> implements ServiceGrpcRuleService {
+public class ServiceGrpcRuleServiceImpl extends ServiceImpl<ServiceGrpcRuleMapper, ServiceGrpcRule>
+		implements ServiceGrpcRuleService {
 
 }
