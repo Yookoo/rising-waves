@@ -2,6 +2,9 @@ package com.waves.gateway.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.waves.gateway.controller.param.GrpcServiceParam;
+import com.waves.gateway.controller.param.HttpServiceParam;
+import com.waves.gateway.controller.param.TcpServiceParam;
 import com.waves.gateway.controller.res.ServiceInfoRes;
 import com.waves.gateway.entity.ServiceInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -18,4 +21,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface ServiceInfoService extends IService<ServiceInfo> {
 
     IPage<ServiceInfoRes> pageServiceList(Page<?> page, String keyword);
+
+    boolean saveHttp(HttpServiceParam entity);
+
+    boolean saveGrpc(GrpcServiceParam entity);
+    boolean saveTcp(TcpServiceParam entity);
 }

@@ -1,15 +1,15 @@
 package com.waves.common.http.controller;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
+
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.waves.common.http.BaseEntity;
 import com.waves.common.http.R;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
-public class CrudController<T extends BaseEntity, S extends IService<T>> extends BaseController<T, S >{
+public class CrudController<T extends BaseEntity, S extends IService<T>> extends BaseController<T, S>{
+
     /**
      * 删除
      *
@@ -18,7 +18,7 @@ public class CrudController<T extends BaseEntity, S extends IService<T>> extends
      */
     @Override
     @DeleteMapping("{id}")
-    public R<T> remove(@PathVariable Long id) {
+    public R remove(@PathVariable Long id) {
         return super.remove(id);
     }
 
@@ -30,7 +30,7 @@ public class CrudController<T extends BaseEntity, S extends IService<T>> extends
      */
     @Override
     @GetMapping("/{id}")
-    public R<T> get(@PathVariable Long id) {
+    public R get(@PathVariable Long id) {
         return super.get(id);
     }
 
@@ -43,7 +43,7 @@ public class CrudController<T extends BaseEntity, S extends IService<T>> extends
      */
     @Override
     @PutMapping("/{id}")
-    public R<T> update(@PathVariable Long id, @Valid @RequestBody T entity) {
+    public R update(@PathVariable Long id, @Valid @RequestBody T entity) {
 
         return super.update(id, entity);
     }
@@ -56,7 +56,7 @@ public class CrudController<T extends BaseEntity, S extends IService<T>> extends
      */
     @Override
     @PostMapping
-    public R<T> create(@Valid @RequestBody T entity) {
+    public R create(@Valid @RequestBody T entity) {
 
         return super.create(entity);
     }
@@ -71,7 +71,7 @@ public class CrudController<T extends BaseEntity, S extends IService<T>> extends
      */
     @Override
     @GetMapping("pages/{num}/{size}")
-    public R<IPage<T>> pages(@PathVariable int num, @PathVariable int size, @ModelAttribute T entity) {
+    public R pages(@PathVariable int num, @PathVariable int size, @ModelAttribute T entity) {
             return super.pages(num, size, entity);
     }
 
@@ -83,7 +83,7 @@ public class CrudController<T extends BaseEntity, S extends IService<T>> extends
      */
     @Override
     @GetMapping("lists")
-    protected R<List<T>> lists(T entity) {
+    protected R lists(T entity) {
         return super.lists(entity);
     }
 }

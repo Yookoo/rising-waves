@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.waves.common.http.BaseEntity;
 import com.waves.common.http.R;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -24,14 +25,14 @@ public class BaseController<T extends BaseEntity, S extends IService<T>> {
 	@Resource
 	HttpServletRequest request;
 
-	@Resource
+	@Autowired
 	S service;
 	/**
 	 * 删除
 	 * @param id {@code Long}
 	 * @return {@link R}
 	 */
-	protected R<T> remove(Long id) {
+	protected R remove(Long id) {
 		return R.deleted(service.removeById(id));
 	}
 
@@ -40,7 +41,7 @@ public class BaseController<T extends BaseEntity, S extends IService<T>> {
 	 * @param id {@code Long}
 	 * @return {@link R}
 	 */
-	protected R<T> get(Long id) {
+	protected R get(Long id) {
 		return R.ok(service.getById(id));
 	}
 
@@ -61,7 +62,7 @@ public class BaseController<T extends BaseEntity, S extends IService<T>> {
 	 * @param entity 领域模型
 	 * @return {@link R}
 	 */
-	protected R<T> create(T entity) {
+	protected R create(T entity) {
 		boolean created = service.save(entity);
 		return R.created(created);
 	}

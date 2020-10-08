@@ -7,6 +7,9 @@ import com.baomidou.mybatisplus.core.metadata.PageList;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.waves.gateway.controller.param.GrpcServiceParam;
+import com.waves.gateway.controller.param.HttpServiceParam;
+import com.waves.gateway.controller.param.TcpServiceParam;
 import com.waves.gateway.controller.res.ServiceInfoRes;
 import com.waves.gateway.domain.ServiceDetail;
 import com.waves.gateway.entity.*;
@@ -16,6 +19,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -47,6 +51,18 @@ public class ServiceInfoServiceImpl extends ServiceImpl<ServiceInfoMapper, Servi
 
     @Autowired
     private ServiceInfoMapper serviceInfoMapper;
+
+    @Autowired
+    private ServiceLoadBalanceMapper serviceLoadBalanceMapper;
+    @Autowired
+    private ServiceAccessControlMapper serviceAccessControlMapper;
+    @Autowired
+    private ServiceHttpRuleMapper serviceHttpRuleMapper;
+
+    @Autowired
+    private ServiceTcpRuleMapper serviceTcpRuleMapper;
+    @Autowired
+    private ServiceGrpcRuleMapper serviceGrpcRuleMapper;
 
     @Override
     public IPage<ServiceInfoRes> pageServiceList(Page<?> page, String keyword) {
@@ -108,6 +124,25 @@ public class ServiceInfoServiceImpl extends ServiceImpl<ServiceInfoMapper, Servi
         Page<ServiceInfoRes> serviceInfoResPage = new Page<>(page.getCurrent(), page.getSize(), page.getTotal(), page.isSearchCount());
         serviceInfoResPage.setRecords(serviceInfoResList);
         return serviceInfoResPage;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public boolean saveHttp(HttpServiceParam entity) {
+
+        return false;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public boolean saveGrpc(GrpcServiceParam entity) {
+        return false;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public boolean saveTcp(TcpServiceParam entity) {
+        return false;
     }
 
 }
