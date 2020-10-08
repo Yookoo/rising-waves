@@ -13,4 +13,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ServiceLoadBalanceService extends IService<ServiceLoadBalance> {
 
+    ServiceLoadBalance queryByServiceId(Long id);
 }

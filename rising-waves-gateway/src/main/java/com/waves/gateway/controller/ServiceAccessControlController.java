@@ -3,7 +3,7 @@ package com.waves.gateway.controller;
 import com.waves.gateway.service.ServiceAccessControlService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.waves.common.http.BaseController;
+import com.waves.common.http.controller.BaseController;
 import com.waves.gateway.entity.ServiceAccessControl;
 
 /**

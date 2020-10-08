@@ -13,4 +13,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ServiceHttpRuleService extends IService<ServiceHttpRule> {
 
+    ServiceHttpRule queryByServiceId(Long id);
 }

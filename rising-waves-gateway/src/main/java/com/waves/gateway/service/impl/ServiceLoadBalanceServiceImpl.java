@@ -1,5 +1,8 @@
 package com.waves.gateway.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.waves.gateway.entity.ServiceLoadBalance;
 import com.waves.gateway.entity.ServiceLoadBalance;
 import com.waves.gateway.mapper.ServiceLoadBalanceMapper;
 import com.waves.gateway.service.ServiceLoadBalanceService;
@@ -17,5 +20,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class ServiceLoadBalanceServiceImpl extends ServiceImpl<ServiceLoadBalanceMapper, ServiceLoadBalance>
 		implements ServiceLoadBalanceService {
-
+	@Override
+	public ServiceLoadBalance queryByServiceId(Long id) {
+		LambdaQueryWrapper<ServiceLoadBalance> wrapper = Wrappers.<ServiceLoadBalance>lambdaQuery()
+				.eq(ServiceLoadBalance::getServiceId, id);
+		return baseMapper.selectOne(wrapper);
+	}
 }

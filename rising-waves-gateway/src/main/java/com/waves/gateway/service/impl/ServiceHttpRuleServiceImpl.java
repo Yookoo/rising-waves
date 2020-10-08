@@ -1,5 +1,9 @@
 package com.waves.gateway.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.waves.gateway.entity.ServiceHttpRule;
+import com.waves.gateway.entity.ServiceGrpcRule;
 import com.waves.gateway.entity.ServiceHttpRule;
 import com.waves.gateway.mapper.ServiceHttpRuleMapper;
 import com.waves.gateway.service.ServiceHttpRuleService;
@@ -17,5 +21,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class ServiceHttpRuleServiceImpl extends ServiceImpl<ServiceHttpRuleMapper, ServiceHttpRule>
 		implements ServiceHttpRuleService {
-
+	@Override
+	public ServiceHttpRule queryByServiceId(Long id) {
+		LambdaQueryWrapper<ServiceHttpRule> wrapper = Wrappers.<ServiceHttpRule>lambdaQuery()
+				.eq(ServiceHttpRule::getServiceId, id);
+		return baseMapper.selectOne(wrapper);
+	}
 }

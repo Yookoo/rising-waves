@@ -1,5 +1,9 @@
 package com.waves.gateway.mapper;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.waves.gateway.controller.res.ServiceInfoRes;
+import com.waves.gateway.domain.ServiceDetail;
 import com.waves.gateway.entity.ServiceInfo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
@@ -13,4 +17,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface ServiceInfoMapper extends BaseMapper<ServiceInfo> {
 
+    IPage<ServiceDetail> selectServiceList(Page page, String keyword);
 }

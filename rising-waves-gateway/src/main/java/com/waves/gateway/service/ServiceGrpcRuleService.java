@@ -13,4 +13,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ServiceGrpcRuleService extends IService<ServiceGrpcRule> {
 
+    ServiceGrpcRule queryByServiceId(Long id);
 }

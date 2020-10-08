@@ -1,5 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="ServiceInfoMapper">
+<mapper namespace="com.waves.gateway.mapper.ServiceInfoMapper">
+    <resultMap id="serviceDetail" type="com.waves.gateway.domain.ServiceDetail">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="load_type" jdbcType="VARCHAR" property="loadType"/>
+        <result column="service_name" jdbcType="VARCHAR" property="serviceName"/>
+        <result column="service_desc" jdbcType="VARCHAR" property="serviceDesc"/>
+        <association property="serviceLoadBalance" javaType="com.waves.gateway.entity.ServiceLoadBalance">
+            <id column="lb_id" jdbcType="INTEGER" property="id"/>
+            <result  column="lb_service_id" jdbcType="INTEGER" property="serviceId"/>
+            <result  column="check_method" jdbcType="INTEGER" property="checkMethod"/>
+            <result  column="check_timeout" jdbcType="INTEGER" property="checkTimeout"/>
+            <result  column="check_interval" jdbcType="INTEGER" property="checkInterval"/>
+            <result  column="round_type" jdbcType="INTEGER" property="roundType"/>
 
+        </association>
+
+        <association property="serviceAccessControl" javaType="com.waves.gateway.entity.ServiceAccessControl">
+            <id column="ac_id" jdbcType="INTEGER" property="id"/>
+            <result  column="ac_service_id" jdbcType="INTEGER" property="serviceId"/>
+            <result  column="open_auth" jdbcType="INTEGER" property="openAuth"/>
+            <result  column="black_list" jdbcType="VARCHAR" property="blackList"/>
+            <result  column="white_list" jdbcType="VARCHAR" property="whiteList"/>
+            <result  column="white_host_name" jdbcType="VARCHAR" property="whiteHostName"/>
+            <result  column="clientip_flow_limit" jdbcType="INTEGER" property="clientipFlowLimit"/>
+            <result  column="service_flow_limit" jdbcType="INTEGER" property="serviceFlowLimit"/>
+        </association>
+
+
+        <association property="serviceTcpRule" javaType="com.waves.gateway.entity.ServiceTcpRule">
+            <id column="tcp_id" jdbcType="INTEGER" property="id"/>
+            <result  column="tcp_service_id" jdbcType="INTEGER" property="serviceId"/>
+            <result  column="tcp_port" jdbcType="INTEGER" property="port"/>
+        </association>
+        <association property="serviceHttpRule" javaType="com.waves.gateway.entity.ServiceHttpRule">
+            <id column="http_id" jdbcType="INTEGER" property="id"/>
+            <result  column="http_service_id" jdbcType="INTEGER" property="serviceId"/>
+            <result  column="rule_type" jdbcType="INTEGER" property="ruleType"/>
+            <result  column="rule" jdbcType="VARCHAR" property="rule"/>
+            <result  column="need_https" jdbcType="INTEGER" property="needHttps"/>
+            <result  column="need_strip_uri" jdbcType="INTEGER" property="needStripUri"/>
+            <result  column="need_websocket" jdbcType="INTEGER" property="needWebsocket"/>
+            <result  column="url_rewrite" jdbcType="VARCHAR" property="urlRewrite"/>
+            <result  column="http_header_transfor" jdbcType="VARCHAR" property="headerTransfor"/>
+
+        </association>
+
+        <association property="serviceGrpcRule" javaType="com.waves.gateway.entity.ServiceGrpcRule">
+            <id column="grpc_id" jdbcType="INTEGER" property="id"/>
+            <result  column="grpc_service_id" jdbcType="INTEGER" property="serviceId"/>
+            <result  column="grpc_port" jdbcType="INTEGER" property="port"/>
+            <result  column="grpc_header_transfor" jdbcType="VARCHAR" property="headerTransfor"/>
+        </association>
+    </resultMap>
+
+
+    <select id="selectServiceList" resultMap="serviceDetail">
+        SELECT
+        info.id,
+        info.load_type,
+        info.service_name,
+        info.service_desc,
+        lb.id lb_id,
+        lb.service_id lb_service_id,
+        lb.check_method,
+        lb.check_timeout,
+        lb.check_interval,
+        lb.round_type,
+        lb.ip_list,
+        lb.weight_list,
+        lb.forbid_list,
+        lb.upstream_connect_timeout,
+        lb.upstream_header_timeout,
+        lb.upstream_idle_timeout,
+        lb.upstream_max_idle,
+        ac.id ac_id,
+        ac.service_id ac_service_id,
+        ac.open_auth,
+        ac.black_list,
+        ac.white_list,
+        ac.white_host_name,
+        ac.clientip_flow_limit,
+        ac.service_flow_limit,
+        tcp.id tcp_id,
+        tcp.service_id tcp_service_id,
+        tcp.port tcp_port,
+        http.id http_id,
+        http.service_id http_service_id,
+        http.rule_type,
+        http.rule,
+        http.need_https,
+        http.need_strip_uri,
+        http.url_rewrite,
+        grpc.id grpc_id,
+        grpc.service_id grpc_service_id,
+        grpc.header_transfor grpc_header_transfor,
+        grpc.port grpc_port
+        FROM gateway_service_info info
+        left join gateway_service_tcp_rule tcp 	ON info.id = tcp.service_id
+        left join gateway_service_grpc_rule grpc on info.id = grpc.service_id
+        left join gateway_service_http_rule http ON  info.id = http.service_id
+        left join gateway_service_load_balance lb ON info.id = lb.service_id
+        left join gateway_service_access_control ac ON info.id = ac.service_id
+        WHERE info.deleted = FALSE
+        <if test="keyword != null and keyword != ''">
+            AND (info.service_name LIKE concat('%',#{keyword},'%')  OR info.service_desc LIKE concat('%',#{keyword},'%'))
+        </if>
+        ORDER BY id desc
+    </select>
 </mapper>

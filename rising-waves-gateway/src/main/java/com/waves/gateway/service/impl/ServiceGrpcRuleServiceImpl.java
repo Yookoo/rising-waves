@@ -1,5 +1,8 @@
 package com.waves.gateway.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.waves.gateway.entity.ServiceGrpcRule;
 import com.waves.gateway.entity.ServiceGrpcRule;
 import com.waves.gateway.mapper.ServiceGrpcRuleMapper;
 import com.waves.gateway.service.ServiceGrpcRuleService;
@@ -17,5 +20,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class ServiceGrpcRuleServiceImpl extends ServiceImpl<ServiceGrpcRuleMapper, ServiceGrpcRule>
 		implements ServiceGrpcRuleService {
-
+	@Override
+	public ServiceGrpcRule queryByServiceId(Long id) {
+		LambdaQueryWrapper<ServiceGrpcRule> wrapper = Wrappers.<ServiceGrpcRule>lambdaQuery()
+				.eq(ServiceGrpcRule::getServiceId, id);
+		return baseMapper.selectOne(wrapper);
+	}
 }

@@ -13,4 +13,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ServiceTcpRuleService extends IService<ServiceTcpRule> {
 
+    ServiceTcpRule queryByServiceId(Long id);
 }

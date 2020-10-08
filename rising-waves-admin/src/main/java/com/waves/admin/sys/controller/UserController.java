@@ -2,7 +2,7 @@ package com.waves.admin.sys.controller;
 
 import com.waves.admin.sys.entity.User;
 import com.waves.admin.sys.service.UserService;
-import com.waves.common.http.BaseController;
+import com.waves.common.http.controller.BaseController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
