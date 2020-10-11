@@ -34,115 +34,120 @@ import java.util.stream.Collectors;
  */
 @Service
 public class ServiceInfoServiceImpl extends ServiceImpl<ServiceInfoMapper, ServiceInfo> implements ServiceInfoService {
-    private final static int  LOAD_TYPE_HTTP =  0;
-    private final static int  LOAD_TYPE_TCP  = 1;
-    private final static int  LOAD_TYPE_GRPC  = 2;
-    private final static int  HTTP_RULE_TYPE_PREFIX_URL =  0;
-    private final static int  HTTP_RULE_TYPE_DOMAIN  = 1;
 
-    @Value("${risingwaves.cluster.host:127.0.0.1}")
-    private String host;
+	private final static int LOAD_TYPE_HTTP = 0;
 
-    @Value("${risingwaves.cluster.port:8080}")
-    private int port;
-    @Value("${risingwaves.cluster.sslPort:8443}")
-    private int sslPort;
+	private final static int LOAD_TYPE_TCP = 1;
 
+	private final static int LOAD_TYPE_GRPC = 2;
 
-    @Autowired
-    private ServiceInfoMapper serviceInfoMapper;
+	private final static int HTTP_RULE_TYPE_PREFIX_URL = 0;
 
-    @Autowired
-    private ServiceLoadBalanceMapper serviceLoadBalanceMapper;
-    @Autowired
-    private ServiceAccessControlMapper serviceAccessControlMapper;
-    @Autowired
-    private ServiceHttpRuleMapper serviceHttpRuleMapper;
+	private final static int HTTP_RULE_TYPE_DOMAIN = 1;
 
-    @Autowired
-    private ServiceTcpRuleMapper serviceTcpRuleMapper;
-    @Autowired
-    private ServiceGrpcRuleMapper serviceGrpcRuleMapper;
+	@Value("${risingwaves.cluster.host:127.0.0.1}")
+	private String host;
 
-    @Override
-    public IPage<ServiceInfoRes> pageServiceList(Page<?> page, String keyword) {
+	@Value("${risingwaves.cluster.port:8080}")
+	private int port;
 
+	@Value("${risingwaves.cluster.sslPort:8443}")
+	private int sslPort;
 
-        // 分页读取服务信息
-        IPage<ServiceDetail> serviceDetailIPage = serviceInfoMapper.selectServiceList(page, keyword);
-        List<ServiceDetail> records = serviceDetailIPage.getRecords();
-        // 处理、构造 返回信息
-        List<ServiceInfoRes> serviceInfoResList = records.stream().map(record -> {
+	@Autowired
+	private ServiceInfoMapper serviceInfoMapper;
 
-            ServiceInfoRes serviceInfoRes = BeanUtil.toBean(record, ServiceInfoRes.class);
+	@Autowired
+	private ServiceLoadBalanceMapper serviceLoadBalanceMapper;
 
-            String serviceAddr = "unknown";
-            if (record.getLoadType() == LOAD_TYPE_HTTP
-                    && record.getServiceHttpRule() != null
-                    && record.getServiceHttpRule().getRuleType() == HTTP_RULE_TYPE_PREFIX_URL
-                    && record.getServiceHttpRule().getNeedHttps() == 1) {
-                serviceAddr = host + ":" + sslPort + record.getServiceHttpRule().getRule();
-            }
-            if (record.getLoadType() == LOAD_TYPE_HTTP
-                    && record.getServiceHttpRule() != null
-                    && record.getServiceHttpRule().getRuleType() == HTTP_RULE_TYPE_PREFIX_URL
-                    && record.getServiceHttpRule().getNeedHttps() == 0) {
-                serviceAddr = host + ":" + port + record.getServiceHttpRule().getRule();
-            }
+	@Autowired
+	private ServiceAccessControlMapper serviceAccessControlMapper;
 
-            if (record.getLoadType() == LOAD_TYPE_HTTP
-                    && record.getServiceHttpRule() != null
-                    && record.getServiceHttpRule().getRuleType() == HTTP_RULE_TYPE_DOMAIN
-                    && record.getServiceHttpRule().getNeedHttps() == 0) {
-                serviceAddr = record.getServiceHttpRule().getRule();
-            }
+	@Autowired
+	private ServiceHttpRuleMapper serviceHttpRuleMapper;
 
-            if (record.getLoadType() == LOAD_TYPE_TCP) {
-                if (record.getServiceTcpRule() !=null && record.getServiceTcpRule().getPort()!= null){
-                    serviceAddr = host + ":" + record.getServiceTcpRule().getPort();
-                }
+	@Autowired
+	private ServiceTcpRuleMapper serviceTcpRuleMapper;
 
-            }
+	@Autowired
+	private ServiceGrpcRuleMapper serviceGrpcRuleMapper;
 
-            if (record.getLoadType() == LOAD_TYPE_GRPC) {
-                if (record.getServiceGrpcRule() !=null && record.getServiceGrpcRule().getPort()!= null){
-                    serviceAddr = host + ":" + record.getServiceGrpcRule().getPort();
-                }
-            }
-            serviceInfoRes.setServiceAddr(serviceAddr);
-            int totalNode = 0;
-            ServiceLoadBalance serviceLoadBalance = record.getServiceLoadBalance();
-            if (serviceLoadBalance!=null&& serviceLoadBalance.getIpList()!=null){
-                 totalNode = StringUtils.split(serviceLoadBalance.getIpList(), ",").length;
-            }
-            serviceInfoRes.setTotalNode(totalNode);
-            serviceInfoRes.setDps(0);
-            serviceInfoRes.setQps(0);
-            return serviceInfoRes;
-        }).collect(Collectors.toList());
-        // 构建分页信息
-        Page<ServiceInfoRes> serviceInfoResPage = new Page<>(page.getCurrent(), page.getSize(), page.getTotal(), page.isSearchCount());
-        serviceInfoResPage.setRecords(serviceInfoResList);
-        return serviceInfoResPage;
-    }
+	@Override
+	public IPage<ServiceInfoRes> pageServiceList(Page<?> page, String keyword) {
 
-    @Override
-    @Transactional(rollbackFor = Exception.class)
-    public boolean saveHttp(HttpServiceParam entity) {
+		// 分页读取服务信息
+		IPage<ServiceDetail> serviceDetailIPage = serviceInfoMapper.selectServiceList(page, keyword);
+		List<ServiceDetail> records = serviceDetailIPage.getRecords();
+		// 处理、构造 返回信息
+		List<ServiceInfoRes> serviceInfoResList = records.stream().map(record -> {
 
-        return false;
-    }
+			ServiceInfoRes serviceInfoRes = BeanUtil.toBean(record, ServiceInfoRes.class);
 
-    @Override
-    @Transactional(rollbackFor = Exception.class)
-    public boolean saveGrpc(GrpcServiceParam entity) {
-        return false;
-    }
+			String serviceAddr = "unknown";
+			if (record.getLoadType() == LOAD_TYPE_HTTP && record.getServiceHttpRule() != null
+					&& record.getServiceHttpRule().getRuleType() == HTTP_RULE_TYPE_PREFIX_URL
+					&& record.getServiceHttpRule().getNeedHttps() == 1) {
+				serviceAddr = host + ":" + sslPort + record.getServiceHttpRule().getRule();
+			}
+			if (record.getLoadType() == LOAD_TYPE_HTTP && record.getServiceHttpRule() != null
+					&& record.getServiceHttpRule().getRuleType() == HTTP_RULE_TYPE_PREFIX_URL
+					&& record.getServiceHttpRule().getNeedHttps() == 0) {
+				serviceAddr = host + ":" + port + record.getServiceHttpRule().getRule();
+			}
 
-    @Override
-    @Transactional(rollbackFor = Exception.class)
-    public boolean saveTcp(TcpServiceParam entity) {
-        return false;
-    }
+			if (record.getLoadType() == LOAD_TYPE_HTTP && record.getServiceHttpRule() != null
+					&& record.getServiceHttpRule().getRuleType() == HTTP_RULE_TYPE_DOMAIN
+					&& record.getServiceHttpRule().getNeedHttps() == 0) {
+				serviceAddr = record.getServiceHttpRule().getRule();
+			}
+
+			if (record.getLoadType() == LOAD_TYPE_TCP) {
+				if (record.getServiceTcpRule() != null && record.getServiceTcpRule().getPort() != null) {
+					serviceAddr = host + ":" + record.getServiceTcpRule().getPort();
+				}
+
+			}
+
+			if (record.getLoadType() == LOAD_TYPE_GRPC) {
+				if (record.getServiceGrpcRule() != null && record.getServiceGrpcRule().getPort() != null) {
+					serviceAddr = host + ":" + record.getServiceGrpcRule().getPort();
+				}
+			}
+			serviceInfoRes.setServiceAddr(serviceAddr);
+			int totalNode = 0;
+			ServiceLoadBalance serviceLoadBalance = record.getServiceLoadBalance();
+			if (serviceLoadBalance != null && serviceLoadBalance.getIpList() != null) {
+				totalNode = StringUtils.split(serviceLoadBalance.getIpList(), ",").length;
+			}
+			serviceInfoRes.setTotalNode(totalNode);
+			serviceInfoRes.setDps(0);
+			serviceInfoRes.setQps(0);
+			return serviceInfoRes;
+		}).collect(Collectors.toList());
+		// 构建分页信息
+		Page<ServiceInfoRes> serviceInfoResPage = new Page<>(page.getCurrent(), page.getSize(), page.getTotal(),
+				page.isSearchCount());
+		serviceInfoResPage.setRecords(serviceInfoResList);
+		return serviceInfoResPage;
+	}
+
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public boolean saveHttp(HttpServiceParam entity) {
+
+		return false;
+	}
+
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public boolean saveGrpc(GrpcServiceParam entity) {
+		return false;
+	}
+
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public boolean saveTcp(TcpServiceParam entity) {
+		return false;
+	}
 
 }

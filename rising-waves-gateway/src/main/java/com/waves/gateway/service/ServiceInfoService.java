@@ -9,7 +9,6 @@ import com.waves.gateway.controller.res.ServiceInfoRes;
 import com.waves.gateway.entity.ServiceInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
 
-
 /**
  * <p>
  * 网关基本信息表 服务类
@@ -20,10 +19,12 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ServiceInfoService extends IService<ServiceInfo> {
 
-    IPage<ServiceInfoRes> pageServiceList(Page<?> page, String keyword);
+	IPage<ServiceInfoRes> pageServiceList(Page<?> page, String keyword);
 
-    boolean saveHttp(HttpServiceParam entity);
+	boolean saveHttp(HttpServiceParam entity);
 
-    boolean saveGrpc(GrpcServiceParam entity);
-    boolean saveTcp(TcpServiceParam entity);
+	boolean saveGrpc(GrpcServiceParam entity);
+
+	boolean saveTcp(TcpServiceParam entity);
+
 }

@@ -1,11 +1,9 @@
 package com.waves.gateway.controller.res;
 
-
 import com.waves.gateway.entity.*;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-
 
 /**
  * <p>
@@ -20,8 +18,10 @@ import lombok.Data;
 public class ServiceInfoRes {
 
 	private static final long serialVersionUID = 1L;
+
 	@ApiModelProperty(value = "ID")
 	private Long id;
+
 	@ApiModelProperty(value = "负载类型 0=http 1=tcp 2=grpc")
 	private Integer loadType;
 
@@ -39,7 +39,5 @@ public class ServiceInfoRes {
 	private Integer qps;
 
 	private Integer dps;
-
-
 
 }

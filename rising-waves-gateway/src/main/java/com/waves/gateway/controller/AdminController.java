@@ -68,9 +68,6 @@ public class AdminController extends BaseController<Admin, AdminService> {
 		return R.ok(adminInfoRes);
 	}
 
-
-
-
 	@GetMapping("/logout")
 	public R<AdminInfoRes> logout() {
 		String token = RequestUtil.getAccessToken();
@@ -79,22 +76,22 @@ public class AdminController extends BaseController<Admin, AdminService> {
 		return R.ok();
 	}
 
-	@PostMapping(value = "/passwd", consumes= MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	@PostMapping(value = "/passwd", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
 	public R<String> changePasswd(
-			@Length(min = 4, message = "密码的长度不能小于4")
-			@RequestParam("newPasswd") String newPasswd) {
+			@Length(min = 4, message = "密码的长度不能小于4") @RequestParam("newPasswd") String newPasswd) {
 		String token = RequestUtil.getAccessToken();
 		String res = valueOperations.get(token);
 		AdminLoginRes adminLoginRes = JSONUtil.toBean(res, AdminLoginRes.class);
 		Assert.notNull(adminLoginRes, "用户不存在");
 
 		adminService.changePasswd(adminLoginRes.getUserName(), newPasswd);
-//		清空token
+		// 清空token
 		clearToken(token);
 		return R.ok();
 	}
 
-	private void clearToken(String token){
+	private void clearToken(String token) {
 		valueOperations.getOperations().delete(token);
 	}
+
 }

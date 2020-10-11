@@ -23,17 +23,16 @@ public class GatewayInterceptorConfiguration implements WebMvcConfigurer {
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new LogInterceptor()).addPathPatterns("/**");
 		registry.addInterceptor(new LoginInterceptor(valueOperations))
-		 .excludePathPatterns("/**/admins/login**","/doc.html","/error",
-				 "/swagger-resources/**", "/configuration/security","/v2/api-docs"
-				 ,"/webjars/**","/**/favicon.ico","/caches/**"
-				 ).addPathPatterns("/**");
+				.excludePathPatterns("/**/admins/login**", "/doc.html", "/error", "/swagger-resources/**",
+						"/configuration/security", "/v2/api-docs", "/webjars/**", "/**/favicon.ico", "/caches/**")
+				.addPathPatterns("/**");
 
 	}
+
 	@Override
- 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("doc.html")
-				.addResourceLocations("classpath:/META-INF/resources/");
-		registry.addResourceHandler("/webjars/**")
-				.addResourceLocations("classpath:/META-INF/resources/webjars/");
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("doc.html").addResourceLocations("classpath:/META-INF/resources/");
+		registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
 	}
+
 }

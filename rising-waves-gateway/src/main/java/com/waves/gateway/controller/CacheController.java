@@ -20,27 +20,27 @@ import java.util.*;
 @RequestMapping("/caches")
 public class CacheController {
 
-    @Autowired
-    private ValueOperations<String,String> valueOperations;
+	@Autowired
+	private ValueOperations<String, String> valueOperations;
 
-    @GetMapping("/{key}")
-    public R get(@PathVariable String key) {
-        Map<String, String> map = new HashMap<>();
-        map.put(key,valueOperations.get(key));
-        return R.ok(map);
-    }
+	@GetMapping("/{key}")
+	public R get(@PathVariable String key) {
+		Map<String, String> map = new HashMap<>();
+		map.put(key, valueOperations.get(key));
+		return R.ok(map);
+	}
 
-    /**
-     * 查询缓存
-     */
-    @GetMapping
-    public R pages() {
-        Set<String>  keys    = valueOperations.getOperations().keys("*");
-        Map<String, String> map = new HashMap<>();
-        for (String k : keys) {
-            map.put(k,valueOperations.get(k));
-        }
-        return R.ok(map);
-    }
+	/**
+	 * 查询缓存
+	 */
+	@GetMapping
+	public R pages() {
+		Set<String> keys = valueOperations.getOperations().keys("*");
+		Map<String, String> map = new HashMap<>();
+		for (String k : keys) {
+			map.put(k, valueOperations.get(k));
+		}
+		return R.ok(map);
+	}
 
 }

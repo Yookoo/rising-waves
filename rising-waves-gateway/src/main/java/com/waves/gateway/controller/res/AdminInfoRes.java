@@ -19,4 +19,5 @@ public class AdminInfoRes {
 
 	@ApiModelProperty(value = "角色")
 	private List<String> roles;
+
 }

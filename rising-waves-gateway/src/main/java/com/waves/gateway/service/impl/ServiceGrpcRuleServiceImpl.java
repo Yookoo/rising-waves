@@ -20,10 +20,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class ServiceGrpcRuleServiceImpl extends ServiceImpl<ServiceGrpcRuleMapper, ServiceGrpcRule>
 		implements ServiceGrpcRuleService {
+
 	@Override
 	public ServiceGrpcRule queryByServiceId(Long id) {
 		LambdaQueryWrapper<ServiceGrpcRule> wrapper = Wrappers.<ServiceGrpcRule>lambdaQuery()
 				.eq(ServiceGrpcRule::getServiceId, id);
 		return baseMapper.selectOne(wrapper);
 	}
+
 }

@@ -21,11 +21,11 @@ import org.springframework.stereotype.Service;
 public class ServiceAccessControlServiceImpl extends ServiceImpl<ServiceAccessControlMapper, ServiceAccessControl>
 		implements ServiceAccessControlService {
 
-
 	@Override
 	public ServiceAccessControl queryByServiceId(Long id) {
 		LambdaQueryWrapper<ServiceAccessControl> wrapper = Wrappers.<ServiceAccessControl>lambdaQuery()
 				.eq(ServiceAccessControl::getServiceId, id);
 		return baseMapper.selectOne(wrapper);
 	}
+
 }

@@ -13,9 +13,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface AdminService extends IService<Admin> {
 
-    void changePasswd(String userName, String newPasswd) ;
+	void changePasswd(String userName, String newPasswd);
 
-    Admin login(String userName, String password) ;
+	Admin login(String userName, String password);
 
-    Admin queryByUserName(String userName);
+	Admin queryByUserName(String userName);
+
 }

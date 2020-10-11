@@ -35,17 +35,11 @@ public class User extends BaseEntity {
 	@ApiModelProperty(value = "用户昵称")
 	private String nickName;
 
-	@ApiModelProperty(value = "用户类型 (0系统用户）")
-	private Integer userType;
-
 	@ApiModelProperty(value = "用户邮箱")
 	private String email;
 
 	@ApiModelProperty(value = "手机号码")
 	private String telephone;
-
-	@ApiModelProperty(value = "用户性别（0未知 1男 2女）")
-	private Integer sex;
 
 	@ApiModelProperty(value = "头像地址")
 	private String avatar;
@@ -60,10 +54,10 @@ public class User extends BaseEntity {
 
 	@ApiModelProperty(value = "最后登陆IP", hidden = true)
 	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
-	private String loginIp;
+	private String lastLoginIp;
 
 	@ApiModelProperty(value = "最后登陆时间", hidden = true)
 	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
-	private LocalDateTime loginTime;
+	private LocalDateTime lastLoginTime;
 
 }

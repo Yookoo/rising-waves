@@ -9,10 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class RequestUtil {
+
 	public static HttpServletRequest getRequest() {
 		return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
 	}
-	
+
 	public static HttpServletResponse getResponse() {
 		return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
 	}
@@ -23,11 +24,12 @@ public class RequestUtil {
 	 */
 	public static String getAccessToken() {
 		HttpServletRequest request = getRequest();
-		String token         = request.getParameter("token");
-		if (StringUtils.isEmpty(token)){
+		String token = request.getParameter("token");
+		if (StringUtils.isEmpty(token)) {
 			token = request.getHeader("Authorization");
 		}
 		Assert.notNull(token, request.getRequestURI() + "需要登录才能访问，请先登录");
 		return token;
 	}
+
 }

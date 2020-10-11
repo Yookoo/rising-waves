@@ -21,10 +21,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class ServiceHttpRuleServiceImpl extends ServiceImpl<ServiceHttpRuleMapper, ServiceHttpRule>
 		implements ServiceHttpRuleService {
+
 	@Override
 	public ServiceHttpRule queryByServiceId(Long id) {
 		LambdaQueryWrapper<ServiceHttpRule> wrapper = Wrappers.<ServiceHttpRule>lambdaQuery()
 				.eq(ServiceHttpRule::getServiceId, id);
 		return baseMapper.selectOne(wrapper);
 	}
+
 }

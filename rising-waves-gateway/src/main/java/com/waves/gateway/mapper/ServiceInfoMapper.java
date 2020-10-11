@@ -17,5 +17,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface ServiceInfoMapper extends BaseMapper<ServiceInfo> {
 
-    IPage<ServiceDetail> selectServiceList(Page page, String keyword);
+	IPage<ServiceDetail> selectServiceList(Page page, String keyword);
+
 }

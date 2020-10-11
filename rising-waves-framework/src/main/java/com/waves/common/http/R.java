@@ -22,8 +22,10 @@ public class R<T> {
 	private Map<String, Object> extra;
 
 	private String traceId;
+
 	// 构造方法
-	public R() {}
+	public R() {
+	}
 
 	public R(long code, T data, String msg) {
 		this.code = code;
@@ -35,9 +37,11 @@ public class R<T> {
 	public static <T> R<T> ok(T data) {
 		return new R<T>(Type.SUCCESS.value, data, OPTIONED_SUCCESS);
 	}
+
 	public static <T> R<T> ok(String msg) {
 		return new R<T>(Type.SUCCESS.value, null, msg);
 	}
+
 	public static <T> R<T> ok() {
 		return new R<T>(Type.SUCCESS.value, null, OPTIONED_SUCCESS);
 	}
@@ -54,8 +58,7 @@ public class R<T> {
 		return new R<T>(errorCode, null, msg);
 	}
 
-
-    public R<T> put(String key, Object value) {
+	public R<T> put(String key, Object value) {
 		if (StringUtils.isEmpty(key) || value == null) {
 			throw new IllegalArgumentException("R的键或值不能为null");
 		}
@@ -78,23 +81,26 @@ public class R<T> {
 	}
 
 	/**
-	 *
 	 * @param b true 表示R.ok false 表示 R.faild
 	 * @param <T>
 	 * @return
 	 */
-	public static <T> R<T> build(boolean b){
-		return b ? R.ok(OPTIONED_SUCCESS) :R.failed(OPTIONED_FAILURE);
+	public static <T> R<T> build(boolean b) {
+		return b ? R.ok(OPTIONED_SUCCESS) : R.failed(OPTIONED_FAILURE);
 	}
-	public static <T> R<T> created(boolean b){
-		return b ? R.ok(CREATED_SUCCESS) :R.failed(CREATED_FAILURE);
+
+	public static <T> R<T> created(boolean b) {
+		return b ? R.ok(CREATED_SUCCESS) : R.failed(CREATED_FAILURE);
 	}
-	public static <T> R<T> updated(boolean b){
-		return b ? R.ok(UPDATED_SUCCESS) :R.failed(UPDATED_FAILURE);
+
+	public static <T> R<T> updated(boolean b) {
+		return b ? R.ok(UPDATED_SUCCESS) : R.failed(UPDATED_FAILURE);
 	}
-	public static <T> R<T> deleted(boolean b){
-		return b ? R.ok(DELETED_SUCCESS) :R.failed(DELETED_FAILURE);
+
+	public static <T> R<T> deleted(boolean b) {
+		return b ? R.ok(DELETED_SUCCESS) : R.failed(DELETED_FAILURE);
 	}
+
 	/**
 	 * 功能描述: 判断是否传入值是否为空,非空则返回值，为空则返回失败信息
 	 *
@@ -103,10 +109,9 @@ public class R<T> {
 	 * @return: Result<T>
 	 * @date: 2018/4/21
 	 */
-	public static <T> R<T> build(T data){
-		return data != null ? R.ok(data) :R.failed(OPTIONED_FAILURE);
+	public static <T> R<T> build(T data) {
+		return data != null ? R.ok(data) : R.failed(OPTIONED_FAILURE);
 	}
-
 
 	public enum Type {
 

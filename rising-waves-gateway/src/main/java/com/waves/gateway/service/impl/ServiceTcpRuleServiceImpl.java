@@ -20,10 +20,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class ServiceTcpRuleServiceImpl extends ServiceImpl<ServiceTcpRuleMapper, ServiceTcpRule>
 		implements ServiceTcpRuleService {
+
 	@Override
 	public ServiceTcpRule queryByServiceId(Long id) {
 		LambdaQueryWrapper<ServiceTcpRule> wrapper = Wrappers.<ServiceTcpRule>lambdaQuery()
 				.eq(ServiceTcpRule::getServiceId, id);
 		return baseMapper.selectOne(wrapper);
 	}
+
 }

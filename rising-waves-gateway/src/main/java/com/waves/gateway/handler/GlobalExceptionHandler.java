@@ -108,13 +108,14 @@ public class GlobalExceptionHandler {
 	public R handleBindException(BindException e) {
 		log.error("参数绑定校验异常", e);
 		BindingResult bindingResult = e.getBindingResult();
-		StringBuffer  errorBuffer  = new StringBuffer("参数绑定校验异常:");
+		StringBuffer errorBuffer = new StringBuffer("参数绑定校验异常:");
 		List<ObjectError> allErrors = bindingResult.getAllErrors();
 		for (ObjectError error : allErrors) {
-			if (error instanceof FieldError){
-				errorBuffer.append(((FieldError)error).getField() + ":"+ error.getDefaultMessage());
-			}else {
-				errorBuffer.append(error.getObjectName() + ":"+ error.getDefaultMessage());
+			if (error instanceof FieldError) {
+				errorBuffer.append(((FieldError) error).getField() + ":" + error.getDefaultMessage());
+			}
+			else {
+				errorBuffer.append(error.getObjectName() + ":" + error.getDefaultMessage());
 			}
 		}
 		return R.failed(errorBuffer.toString());

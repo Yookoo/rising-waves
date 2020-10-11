@@ -27,6 +27,7 @@ public class BaseController<T extends BaseEntity, S extends IService<T>> {
 
 	@Autowired
 	S service;
+
 	/**
 	 * 删除
 	 * @param id {@code Long}
@@ -74,9 +75,9 @@ public class BaseController<T extends BaseEntity, S extends IService<T>> {
 	 * @return {@link R}
 	 */
 	protected R<IPage<T>> pages(int num, int size, T entity) {
-		Page<T>               page         = new Page<>(num, size);
+		Page<T> page = new Page<>(num, size);
 		LambdaQueryWrapper<T> queryWrapper = Wrappers.lambdaQuery(entity);
-		IPage<T>              pageRes      = service.page(page, queryWrapper);
+		IPage<T> pageRes = service.page(page, queryWrapper);
 		return R.ok(pageRes);
 	}
 
@@ -86,7 +87,8 @@ public class BaseController<T extends BaseEntity, S extends IService<T>> {
 	 */
 	protected R<List<T>> lists(T entity) {
 		LambdaQueryWrapper<T> queryWrapper = Wrappers.lambdaQuery(entity);
-		List<T>               list         = service.list(queryWrapper);
+		List<T> list = service.list(queryWrapper);
 		return R.ok(list);
 	}
+
 }
