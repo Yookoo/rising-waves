@@ -1,4 +1,4 @@
-package com.waves.common.http.group;
+package com.waves.common.web.group;
 
 /**
  * @author zhukaiyuan

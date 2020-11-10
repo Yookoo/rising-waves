@@ -1,12 +1,12 @@
-package com.waves.common.http.controller;
+package com.waves.common.web.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.waves.common.http.BaseEntity;
-import com.waves.common.http.R;
+import com.waves.common.web.BaseEntity;
+import com.waves.common.web.R;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Resource;
@@ -23,10 +23,10 @@ import java.util.List;
 public class BaseController<T extends BaseEntity, S extends IService<T>> {
 
 	@Resource
-	HttpServletRequest request;
+    protected HttpServletRequest request;
 
 	@Autowired
-	S service;
+	protected S service;
 
 	/**
 	 * 删除

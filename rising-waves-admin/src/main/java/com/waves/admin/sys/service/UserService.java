@@ -1,6 +1,8 @@
 package com.waves.admin.sys.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.waves.admin.sys.controller.param.LoginParam;
+import com.waves.admin.sys.controller.result.LoginResult;
 import com.waves.admin.sys.entity.User;
 
 /**
@@ -13,4 +15,5 @@ import com.waves.admin.sys.entity.User;
  */
 public interface UserService extends IService<User> {
 
+    LoginResult login(LoginParam param);
 }

@@ -1,8 +1,8 @@
-package com.waves.common.http.controller;
+package com.waves.common.web.controller;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.waves.common.http.BaseEntity;
-import com.waves.common.http.R;
+import com.waves.common.web.BaseEntity;
+import com.waves.common.web.R;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;

@@ -3,7 +3,7 @@ package com.waves.gateway.controller;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.json.JSONUtil;
-import com.waves.common.http.R;
+import com.waves.common.web.R;
 import com.waves.gateway.controller.param.AdminLoginParam;
 import com.waves.gateway.controller.res.AdminInfoRes;
 import com.waves.gateway.controller.res.AdminLoginRes;
@@ -18,7 +18,7 @@ import org.springframework.http.MediaType;
 import org.springframework.util.Assert;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import com.waves.common.http.controller.BaseController;
+import com.waves.common.web.controller.BaseController;
 import com.waves.gateway.entity.Admin;
 
 import javax.validation.Valid;

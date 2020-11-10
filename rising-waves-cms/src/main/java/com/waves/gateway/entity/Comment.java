@@ -2,7 +2,7 @@ package com.waves.gateway.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.time.LocalDateTime;
-import com.waves.common.http.BaseEntity;
+import com.waves.common.web.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

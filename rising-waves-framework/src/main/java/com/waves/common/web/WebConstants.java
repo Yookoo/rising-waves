@@ -1,4 +1,4 @@
-package com.waves.common.http;
+package com.waves.common.web;
 
 /**
  * @author apple

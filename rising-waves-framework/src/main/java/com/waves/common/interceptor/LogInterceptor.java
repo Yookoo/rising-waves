@@ -1,7 +1,7 @@
 package com.waves.common.interceptor;
 
 import cn.hutool.core.util.IdUtil;
-import com.waves.common.http.WebConstants;
+import com.waves.common.web.WebConstants;
 import org.slf4j.MDC;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;

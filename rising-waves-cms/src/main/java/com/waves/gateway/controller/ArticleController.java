@@ -4,7 +4,7 @@ import com.waves.gateway.entity.Article;
 import com.waves.gateway.service.ArticleService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.waves.common.http.controller.BaseController;
+import com.waves.common.web.controller.BaseController;
 
 /**
  * <p>

@@ -1,6 +1,6 @@
 package com.waves.gateway.interceptor;
 
-import com.waves.common.http.WebConstants;
+import com.waves.common.web.WebConstants;
 import com.waves.gateway.util.RequestUtil;
 import org.slf4j.MDC;
 import org.springframework.data.redis.core.ValueOperations;

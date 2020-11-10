@@ -1,4 +1,4 @@
-package com.waves.common.http;
+package com.waves.common.web;
 
 import lombok.Data;
 import org.slf4j.MDC;
@@ -7,8 +7,8 @@ import org.springframework.util.StringUtils;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.waves.common.http.WebConstants.*;
-import static com.waves.common.http.WebConstants.UPDATED_FAILURE;
+import static com.waves.common.web.WebConstants.*;
+import static com.waves.common.web.WebConstants.UPDATED_FAILURE;
 
 @Data
 public class R<T> {
