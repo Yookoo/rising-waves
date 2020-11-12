@@ -1,8 +1,7 @@
 package com.waves.generator;
 
-import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
+import cn.hutool.setting.Setting;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
-import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
@@ -15,43 +14,26 @@ import com.waves.common.web.BaseEntity;
 import java.util.*;
 
 /**
- * <p>
- * 演示例子，执行 main 方法控制台输入模块表名回车自动生成对应项目目录中
- * </p>
  *
  * @author zhukaiyuan
  */
 
 public class CodeGenerator {
 
-	/**
-	 * 基本包名
-	 */
-	private static final String BASE_PACKAGE = "com.waves.gateway";
-
-	/**
-	 * 作者
-	 */
-	private static final String AUTHOR_NAME = "不吃香菜9527";
-
-	/**
-	 * <p>
-	 * 读取控制台内容
-	 * </p>
-	 */
-	public static String scanner(String tip) {
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("请输入" + tip + "：");
-		if (scanner.hasNext()) {
-			String ipt = scanner.next();
-			if (StringUtils.isNotBlank(ipt)) {
-				return ipt;
-			}
-		}
-		throw new MybatisPlusException("请输入正确的" + tip + "！");
-	}
-
 	public static void main(String[] args) {
+		Setting setting = new Setting("code-generator.setting");
+		Setting mysql = setting.getSetting("mysql");
+		String driver = mysql.getStr("driver");
+		String url = mysql.getStr("url");
+		String username = mysql.getStr("username");
+		String password = mysql.getStr("password");
+
+		Setting codegen = setting.getSetting("codegen");
+		String basePackage = codegen.getStr("base-package");
+		String author = codegen.getStr("author");
+		String module = codegen.getStr("module");
+		String tables = codegen.getStr("tables");
+		String tablePrefix = codegen.getStr("table-prefix");
 		// 代码生成器
 		AutoGenerator mpg = new AutoGenerator();
 
@@ -62,7 +44,7 @@ public class CodeGenerator {
 		gc.setOpen(false);
 		// 实体属性 Swagger2 注解
 		gc.setSwagger2(true);
-		gc.setAuthor(AUTHOR_NAME);
+		gc.setAuthor(author);
 		// 修改Service接口的文件名，去掉前面的I
 		gc.setServiceName("%sService");
 		gc.setFileOverride(true);
@@ -70,10 +52,10 @@ public class CodeGenerator {
 
 		// 数据源配置
 		DataSourceConfig dsc = new DataSourceConfig();
-		dsc.setUrl("jdbc:mysql://localhost:3306/rw-gateway?useUnicode=true&useSSL=false&characterEncoding=utf8");
-		dsc.setDriverName("com.mysql.cj.jdbc.Driver");
-		dsc.setUsername("root");
-		dsc.setPassword("root");
+		dsc.setUrl(url);
+		dsc.setDriverName(driver);
+		dsc.setUsername(username);
+		dsc.setPassword(password);
 		// dsc.setSchemaName("public");
 		// dsc.setUrl("jdbc:h2:mem:public;MODE=MYSQL;DATABASE_TO_UPPER=false;INIT=CREATE
 		// SCHEMA IF NOT EXISTS public");
@@ -84,8 +66,8 @@ public class CodeGenerator {
 
 		// 包配置
 		PackageConfig pc = new PackageConfig();
-		pc.setModuleName(scanner("模块名"));
-		pc.setParent(BASE_PACKAGE);
+		pc.setModuleName(module);
+		pc.setParent(basePackage);
 		mpg.setPackageInfo(pc);
 
 		// 自定义配置
@@ -140,9 +122,9 @@ public class CodeGenerator {
 		strategy.setRestControllerStyle(true);
 		// 公共父类
 		strategy.setSuperControllerClass(BaseController.class);
-		strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
+		strategy.setInclude(tables.split(","));
 		strategy.setControllerMappingHyphenStyle(true);
-		strategy.setTablePrefix(pc.getModuleName() + "_");
+		strategy.setTablePrefix(tablePrefix + "_");
 		mpg.setStrategy(strategy);
 		mpg.setTemplateEngine(new FreemarkerTemplateEngine());
 		mpg.execute();

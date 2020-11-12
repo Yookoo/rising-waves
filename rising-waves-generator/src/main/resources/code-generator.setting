@@ -1,0 +1,25 @@
+# -------------------------------------------------------------
+# ----- Setting File with UTF8-----
+# ----- 数据库配置文件 -----
+# -------------------------------------------------------------
+
+#中括表示一个分组，其下面的所有属性归属于这个分组，在此分组名为demo，也可以没有分组
+[mysql]
+# 自定义数据源设置文件，这个文件会针对当前分组生效，用于给当前分组配置单独的数据库连接池参数，没有则使用全局的配置
+# ds.setting.path = config/other.setting
+# 数据库驱动名，如果不指定，则会根据url自动判定
+driver = com.mysql.cj.jdbc.Driver
+# JDBC url，必须
+url = jdbc:mysql://localhost:3306/rising-waves?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=GMT%2B8
+# 用户名，必须
+username = root
+# 密码，必须，如果密码为空，请填写 pass =
+password = root
+
+[codegen]
+# base-package
+base-package = com.waves
+author = 不吃香菜9527
+tables = sys_role,sys_perms,sys_role_perms,sys_oragn
+table-prefix = sys
+module = admin

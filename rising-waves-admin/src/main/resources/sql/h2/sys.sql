@@ -163,7 +163,7 @@ COMMIT;
 DROP TABLE IF EXISTS sys_role_perms;
 CREATE TABLE sys_role_perms (
   role_id bigint(20) NOT NULL COMMENT '角色ID',
-  menu_id bigint(20) NOT NULL COMMENT '菜单ID'
+  perms_id bigint(20) NOT NULL COMMENT '菜单ID'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='角色和菜单关联表';
 
 -- ----------------------------

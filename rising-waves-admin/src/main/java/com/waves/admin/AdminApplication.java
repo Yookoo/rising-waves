@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
  * @author zhukaiyuan
  */
 @MapperScan("com.waves.admin.*.mapper")
-@SpringBootApplication(exclude = RedisAutoConfiguration.class)
+@SpringBootApplication
 public class AdminApplication {
 
 	public static void main(String[] args) {
